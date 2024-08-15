@@ -1,0 +1,16 @@
+public class Str {
+    public static void main(String[] args) {
+        String s="Swapnil";
+        String s1="SwapnilK";
+        System.out.println(s.charAt(0));
+        System.out.println(s.lastIndexOf(s));
+        System.out.println(s.concat(s1));
+        System.out.println(s.equals(s1));
+        System.out.println(s.codePointAt(1));
+        System.out.println(s.codePointBefore(1));
+        System.out.println(s.codePointCount(0, 5));
+        System.out.println(s.compareTo(s1));
+        System.out.println(s.formatted(s1));
+        System.out.println(s1.indexOf(s1));
+    }
+}
