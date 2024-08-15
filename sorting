@@ -1,0 +1,32 @@
+public class Main {
+	
+	static boolean find(int arr [],int n,int idx)
+	{
+		 if(idx==arr.length)
+		 {
+		 	 return false;
+		 }
+		 return arr[idx]==n || find (arr,n,idx+1);
+	}
+	
+	static int findidx(int arr[],int target,int idx)
+	{
+		 if(idx==arr.length)
+	{
+		return -1;
+	}
+	if(arr[idx]==target)
+	{
+		 return idx;
+	}
+	else
+	{
+		return findidx(arr,target,idx+1);
+	}
+	}
+	public static void main(String[] args) {
+		int arr []={ 1,2,3,4,5,4};
+		System.out.println(find(arr,4,0));
+		System .out.println(findidx(arr,4,0));
+	}
+}
