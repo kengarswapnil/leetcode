@@ -1,0 +1,16 @@
+// Define a Node class
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+// BinaryTree class
+class BinaryTree {
+    Node root;
+
+    // Constructor to create 
