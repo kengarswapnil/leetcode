@@ -1,0 +1,62 @@
+public class LList {
+
+    class Node{
+        int data;
+        Node next;
+
+        //construtor  
+
+        Node(int data){
+            this.data=data;
+            this.next=null;
+
+        }
+
+    }
+
+    Node head;
+    //construtor class Llist
+    LList(){
+        this.head=null;
+
+    }
+
+    //insert list 
+    public void append(int data){
+        if(head==null){
+            head = new Node(data);
+        }
+        else{
+            Node curr=head;
+            while (curr.next!=null) {
+                curr =curr.next;
+                
+            }
+            curr.next = new Node(data);
+        }
+    }
+
+
+    ///print list
+        void  printList(){
+            Node curr = head;
+            while(curr!=null){
+                System.out.print(curr.data+"-->");
+                curr = curr.next;
+            }
+            System.out.println();
+        
+
+    }
+
+    //main class
+    public static void main(String[] args) {
+        LList list = new LList();
+        list.append(10);
+        list.append(20);
+        list.append(30);
+        list.printList();
+        
+    }
+
+}
