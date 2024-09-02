@@ -1,0 +1,13 @@
+ 
+        while(t-- > 0) {
+            int n = scanner.nextInt(); // Read the integer N
+            int sum = 0;
+            
+            // Calculate sum of digits
+            while(n > 0) {
+                sum += n % 10; // Add the last digit of n to sum
+                n /= 10; // Remove the last digit from n
+            }
+            
+            System.out.println(sum); // Print the sum of digits
+        }
