@@ -1,0 +1,27 @@
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        int i = 0, count = 1; // count is initialized as 1, since we can plant a flower with two free spaces on the left
+        while(i < flowerbed.length){
+            if(n == 0){
+                return true;
+            }
+                
+            if(flowerbed[i] == 0){
+                count++;
+                if(count == 3){
+                    n--;
+                    count = 1;
+                }
+            }
+            else{
+                count = 0; // reset count if we find a flower planted
+            }
+            i++;
+        }
+        // check if we can plant at the edge (right)
+        if(count == 2){
+            n--;
+        }
+        return n == 0;
+    }
+}
