@@ -1,0 +1,34 @@
+// Definition for a binary tree node
+class Node {
+    int value;
+    Node left, right;
+
+    public Node(int item) {
+        value = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTree {
+    Node root;
+
+    // In-order traversal method
+    void inOrderTraversal(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        // Traverse the left subtree
+        inOrderTraversal(node.left);
+
+        // Visit the root node
+        System.out.print(node.value + " ");
+
+        // Traverse the right subtree
+        inOrderTraversal(node.right);
+    }
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        
+        // Creating a sample binary tree
