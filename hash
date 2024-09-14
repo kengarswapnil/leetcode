@@ -1,0 +1,45 @@
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class HashingExample {
+
+    public static void main(String[] args) {
+        String dataToHash = "Hello, World!";
+
+        // Hash using different algorithms
+        String sha256Hash = hashWithAlgorithm(dataToHash, "SHA-256");
+        String md5Hash = hashWithAlgorithm(dataToHash, "MD5");
+        String sha1Hash = hashWithAlgorithm(dataToHash, "SHA-1");
+
+        // Print the results
+        System.out.println("SHA-256 Hash: " + sha256Hash);
+        System.out.println("MD5 Hash: " + md5Hash);
+        System.out.println("SHA-1 Hash: " + sha1Hash);
+    }
+
+    private static String hashWithAlgorithm(String data, String algorithm) {
+        try {
+            // Create a MessageDigest instance for the specified algorithm
+            MessageDigest digest = MessageDigest.getInstance(algorithm);
+            
+            // Perform the hashing
+            byte[] hashBytes = digest.digest(data.getBytes());
+            
+            // Convert the byte array to a hexadecimal string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashBytes) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            // Handle the case where the algorithm is not available
+            e.printStackTrace();
+            return null;
+        }
+    }
+}
