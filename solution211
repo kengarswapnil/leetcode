@@ -1,0 +1,32 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+            if (nums1.length > nums2.length) {
+                int[] temp = nums1;
+                nums1 = nums2;
+                nums2 = temp;
+            }
+
+            int x = nums1.length;
+            int y = nums2.length;
+            int low = 0, high = x;
+
+            while (low <= high) {
+                int px = (low + high) >>> 1;
+                int py = (x + y + 1) / 2 - px;
+
+                int maxX = (px == 0) ? Integer.MIN_VALUE : nums1[px - 1];
+                int minX = (px == x) ? Integer.MAX_VALUE : nums1[px];
+                int maxY = (py == 0) ? Integer.MIN_VALUE : nums2[py - 1];
+                int minY = (py == y) ? Integer.MAX_VALUE : nums2[py];
+
+                if (maxX <= minY && maxY <= minX) {
+                    return ((x + y) % 2 == 0) 
+                        ? ((maxX > maxY ? maxX : maxY) + (minX < minY ? minX : minY)) / 2.0
+                        : (maxX > maxY ? maxX : maxY);
+                }
+                if (maxX > minY) high = px - 1;
+                else low = px + 1;
+            }
+            return 0.0;
+        }
+}
