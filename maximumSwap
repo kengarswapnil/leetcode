@@ -1,0 +1,29 @@
+class Solution {
+    public int maximumSwap(int num) {
+        char[] digits = Integer.toString(num).toCharArray(); // Convert number to char array
+        int[] last = new int[10]; // To store the last occurrence of each digit
+
+        // Store the last index of each digit
+        for (int i = 0; i < digits.length; i++) {
+            last[digits[i] - '0'] = i;
+        }
+
+        // Traverse the digits and find the first swap opportunity
+        for (int i = 0; i < digits.length; i++) {
+            // Check if a larger digit exists later
+            for (int d = 9; d > digits[i] - '0'; d--) {
+                if (last[d] > i) {
+                    // Swap the current digit with the larger digit
+                    char temp = digits[i];
+                    digits[i] = digits[last[d]];
+                    digits[last[d]] = temp;
+                    // Return the resulting number
+                    return Integer.parseInt(new String(digits));
+                }
+            }
+        }
+
+        // If no swap improves the number, return the original number
+        return num;
+    }
+}
