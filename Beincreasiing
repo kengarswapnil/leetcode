@@ -1,0 +1,26 @@
+class Solution {
+    public boolean canBeIncreasing(int[] nums) {
+        int idx = 0;
+        int s = -1;
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] >= nums[i + 1]) { // Check for non-increasing sequence
+                idx++;
+                s = i;
+            }
+        }
+
+        if (idx > 1) {
+            return false; // More than one removal needed
+        } else if (idx == 1) {
+            // Check if removing nums[s] or nums[s+1] makes it strictly increasing
+            if (s == 0 || s == nums.length - 2 || nums[s + 1] > nums[s - 1] || nums[s + 2] > nums[s]) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return true; // Already strictly increasing
+    }
+}
