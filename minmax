@@ -1,0 +1,34 @@
+public class Minmax {
+    public static void main(String[] args) {
+
+        int arr[]={1,2,3,4,5};
+        int n = arr.length;
+        int [] res=minmax(arr, 0, n-1);
+
+        
+        System.out.println(res[0]);
+        System.out.println(res[1]);
+        
+    }
+
+    public static int[] minmax(int arr[],int lh,int hi)
+    {
+        if(lh==hi)
+        {
+             return new int []{arr[lh],arr[lh]};
+        }
+
+        int mid = (lh+hi)/2;
+
+        int []rhh = minmax(arr, mid+1, hi);
+        int [] lhs = minmax(arr, lh, mid);
+
+
+        int minvalue = Math.min(rhh[0],  lhs [0]);
+        int maxvalue = Math.max(rhh[1], lhs[1]);
+
+        return new int[]{minvalue,maxvalue};
+
+
+    }
+}
