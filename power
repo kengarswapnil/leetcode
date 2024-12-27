@@ -1,0 +1,19 @@
+public class Power {
+
+    public static int power(int n)
+    {
+        if(n<=1)
+        {
+            return 1;
+        }
+        else
+        {
+            return power(n-1)*n;
+        }
+    }
+    public static void main(String[] args) {
+        int res = power(3);
+        System.out.println(res);
+        
+    }
+}
