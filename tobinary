@@ -1,0 +1,23 @@
+
+public class StrtoBinary {
+
+    public  String toBinary(int n)
+    {
+        if(n<=1)
+
+        {
+            return String.valueOf(n);
+        }
+        else
+        {
+            return toBinary(n/2) + String.valueOf(n%2);
+        }
+    }
+    public static void main(String[] args) {
+
+        StrtoBinary convert = new StrtoBinary();
+        String res = convert.toBinary(2);
+        System.out.println(res);
+        
+    }
+}
